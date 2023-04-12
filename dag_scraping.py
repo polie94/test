@@ -37,6 +37,7 @@ def scraping():
     my_ua = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"  ## gepüfft auf https://www.whatsmyua.info/
     link_to_shop = "https://www.gunviolencearchive.org/query/1e1fc646-a270-420e-8b41-3f497794831f/export-csv" 
     opts = Options()
+    CHROMEDRIVER_PATH = '/usr/local/bin/chromedriver'
     opts.add_argument("user-agent=" + my_ua)
     opts.add_argument("--disable-blink-features=AutomationControlled")
     opts.add_argument("--window-size=1920,1080")
@@ -47,7 +48,7 @@ def scraping():
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("disable-gpu")
     print("Open driver")
-    driver = webdriver.Chrome(options=opts)
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,options=opts)
     driver.get(link_to_shop)
     print("Wait for button")
     cookie_button = WebDriverWait(driver, 30).until(
