@@ -71,8 +71,8 @@ def scraping():
   
     print(df)
     
-    #rds_hook = PostgresHook(postgres_conn_id='postgres_aws_dev')
-    #rds_hook.insert_rows('gun_violance', df.values)
+    rds_hook = PostgresHook(postgres_conn_id='postgres_aws_dev')
+    rds_hook.insert_rows('gun_violance', df.values)
 
 
     
@@ -103,5 +103,4 @@ create_table = PostgresOperator(
             CREATE TABLE IF NOT EXISTS gun_violance (Incident_ID integer,Incident_Date timestamp, State VARCHAR(30), City_Or_County VARCHAR(50),Address VARCHAR(50), Killed integer, Injured integer, Operations Varchar(20));
         '''
 )
-#create_table  >> 
-scraping
+create_table  >> scraping
