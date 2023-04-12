@@ -50,7 +50,7 @@ def scraping():
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("disable-gpu")
     print("Open driver")
-    driver = webdriver.Chrome(ChromeDriverManager().install(),executable_path=CHROMEDRIVER_PATH,options=opts)
+    driver = webdriver.Chrome(ChromeDriverManager().install(),options=opts) #executable_path=CHROMEDRIVER_PATH,
     driver.get(link_to_shop)
     print("Wait for button")
     cookie_button = WebDriverWait(driver, 30).until(
