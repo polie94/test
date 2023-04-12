@@ -25,6 +25,8 @@ import datetime
 import os
 from airflow.providers.amazon.aws.hooks.base_aws import AwsBaseHook
 from airflow.hooks.postgres_hook import PostgresHook
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 def scraping():
     
@@ -48,7 +50,7 @@ def scraping():
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("disable-gpu")
     print("Open driver")
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,options=opts)
+    driver = webdriver.Chrome(ChromeDriverManager().install(),executable_path=CHROMEDRIVER_PATH,options=opts)
     driver.get(link_to_shop)
     print("Wait for button")
     cookie_button = WebDriverWait(driver, 30).until(
