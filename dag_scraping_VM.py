@@ -82,7 +82,7 @@ dag =DAG(
     'Scraping_gun',
     catchup = False, 
     #schedule_interval = '0 15 */3 * *',
-    schedule_interval = '0 */15 * * *',
+    schedule_interval = '*/15 * * * *',
     #schedule_interval='@once',
     #start_date=datetime(2015, 12, 1))
     start_date=datetime.datetime.now() - datetime.timedelta(days=1))
